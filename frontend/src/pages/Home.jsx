@@ -15,8 +15,10 @@ const Home = () => {
     const fetchExpense = async () => {
       const res = await axios.get("http://localhost:3001/api/" + user._id);
       console.log(res.data.expenses);
-      setExpense([...res.data.expense]);
-      setIncome([...res.data.income]);
+      if(res.data){
+        setExpense([...res.data.expense]);
+        setIncome([...res.data.income]);
+      }
     };
     fetchExpense();
   }, [user]);
